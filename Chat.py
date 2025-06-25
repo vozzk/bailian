@@ -67,16 +67,16 @@ class LLM_predict:
             "function": {
                 "name": "query_from_knowledge_base",
                 "description": "从私有知识库（RAG系统）中检索与用户查询相关的非结构化文本信息，如施工规范、安全协议、历史施工方案、技术文档、物料清单、机械设备要求等。需要提供具体的关键词列表以提高检索精度。",
-                "parameters": { # 这里的键名是 "parameters"，而不是 "input_params"
+                "parameters": { 
                     "type": "object",
                     "properties": {
                         "kws": {
                             "type": "array",
-                            "items": {"type": "string"}, # 列表元素的类型是字符串
+                            "items": {"type": "string"}, 
                             "description": "用于知识库检索的关键词列表，例如：['高空作业安全', '塔吊安装', '混凝土浇筑规范', 'A项目方案']。"
                         }
                     },
-                    "required": ["kws"] # 必须包含此参数
+                    "required": ["kws"] 
                 }
             },
         })
@@ -107,3 +107,6 @@ if __name__ == '__main__':
 
     response_1 = llm.predict(messages_1)
     print(f"\nLLM 响应: {response_1}")
+
+    # LLM 响应: ChatCompletionMessage(content='', role='assistant', function_call=None, tool_calls=[ChatCompletionMessageToolCall(id='call_78bd9b38f7b54c689316d4', function=Function(arguments='{"project_id": "N12"}', name='query_from_db'), type='function', index=0)])
+
